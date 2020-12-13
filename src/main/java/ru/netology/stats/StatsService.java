@@ -17,13 +17,14 @@ public class StatsService {
     /// средняя сумма продаж
 
     public int averageSales(int[] values) {
-        int avgSales = 0;
-        int month = 0;
+//        int avgSales = 0;
+        int month = 12;
 
-        for (int value : values) {
-            month = month + 1;
-            avgSales = calculateSum(values) / month;
-        }
+
+//        for (int value : values) {
+//            month = month + 1;
+            int avgSales = calculateSum(values) / month;
+//        }
         return avgSales;
 
     }
@@ -66,24 +67,29 @@ public class StatsService {
     }
 ///месяцы с продажами ниже среднего
     public int monthLowSales(int[] values) {
-        int avgSales = 0;
+
+        int monthLSel = 0;
+        int avgSales = averageSales(values);
+
         for (int value : values) {
-            if (value < averageSales(values)) {
-                avgSales += 1;
+            if (value < avgSales) {
+                monthLSel += 1;
             }
         }
-        return avgSales;
+        return monthLSel;
     }
 
     /// месяцы с продажами выше среднего
     public int monthHightSales(int[] values) {
-        int avgSales = 0;
+        int monthHSel = 0;
+        int avgSales = averageSales(values);
+
         for (int value : values) {
-            if (value > averageSales(values)) {
-                avgSales += 1;
+            if (value > avgSales) {
+                monthHSel += 1;
             }
         }
-        return avgSales;
+        return monthHSel;
     }
 
 
